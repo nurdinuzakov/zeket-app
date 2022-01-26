@@ -6,7 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Models\AccessToken;
 use App\Models\Contact;
 use App\Models\User;
-use App\Models\UserInvite;
+use App\Models\Invite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -55,7 +55,7 @@ class AuthController extends BaseController
         $config = config('app.invitation');
 
         if (!$config) {
-            $checkEmail = UserInvite::where('email', $email)->first();
+            $checkEmail = Invite::where('email', $email)->first();
 
             if (!$checkEmail) {
                 return $this->sendError("this email wasn't invited",422);

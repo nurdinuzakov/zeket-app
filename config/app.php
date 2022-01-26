@@ -27,6 +27,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    'invitation' => env('ALLOW_REGISTRATION', true),
 
     /*
     |--------------------------------------------------------------------------
