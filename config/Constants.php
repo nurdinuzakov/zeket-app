@@ -1,6 +1,6 @@
 <?php
 
 return  [
-    'local' => 'https://doorstack-html.axeldemos.com',
+    'local' => 'http://localhost:8000/',
     'publicImgUrl' => '',
 ];

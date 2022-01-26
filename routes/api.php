@@ -25,6 +25,15 @@ Route::get('/not-authorized',[AuthController::class, 'notAuthorized'])->name('no
 Route::post('/send-code',[AuthController::class,'sendCodeToEmail']);
 
 Route::post('/login',[AuthController::class,'loginStore']);
+Route::post('/logout',[AuthController::class,'logout']);
+
+Route::post('/confirm-email',[AuthController::class,'confirmEmail']);
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/forgot-password',[AuthController::class,'forgotPassword']);
+Route::post('/forgot-password-confirm',[AuthController::class,'forgotPasswordConfirm']);
+Route::post('/set-new-password',[AuthController::class,'setNewPassword']);
+
+
 
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/invite',[InviteController::class, 'invitation']);

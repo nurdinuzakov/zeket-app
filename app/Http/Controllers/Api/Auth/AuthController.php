@@ -162,7 +162,7 @@ class AuthController extends BaseController
         $config = config('app.invitation');
 
         if (!$config) {
-            $checkEmail = UserInvite::where('email', $inputs['email'])->first();
+            $checkEmail = Invite::where('email', $inputs['email'])->first();
             $checkEmail->invitation_used = true;
             $checkEmail->save();
         }
