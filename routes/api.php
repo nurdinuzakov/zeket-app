@@ -22,10 +22,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/not-authorized',[AuthController::class, 'notAuthorized'])->name('not_authorized');
 
+Route::get('/auth/google', function () {
+    return Socialite::driver('google')->stateless()->redirect();
+});
+Route::get('/auth/facebook', function () {
+    return Socialite::driver('facebook')->stateless()->redirect();
+});
+
+Route::get('/auth/google/callback', [AuthController::class, 'googleCallback']);
+Route::get('/auth/facebook/callback', [AuthController::class, 'facebookCallback']);
+
+
 Route::post('/send-code',[AuthController::class,'sendCodeToEmail']);
 
 Route::post('/login',[AuthController::class,'loginStore']);
-Route::post('/logout',[AuthController::class,'logout']);
+
 
 Route::post('/confirm-email',[AuthController::class,'confirmEmail']);
 Route::post('/register',[AuthController::class,'register']);
@@ -36,5 +47,10 @@ Route::post('/set-new-password',[AuthController::class,'setNewPassword']);
 
 
 Route::middleware(['auth:api'])->group(function () {
+
     Route::post('/invite',[InviteController::class, 'invitation']);
+    Route::post('/logout',[AuthController::class,'logout']);
+
+
+    Route::post('/create-post',[AuthController::class,'logout']);
 });
