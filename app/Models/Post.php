@@ -12,7 +12,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $table = 'contacts';
+    protected $table = 'posts';
     protected $guarded = ['id'];
 
     public function postComments() : HasMany

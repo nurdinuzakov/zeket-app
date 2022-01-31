@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\InviteController;
+use App\Http\Controllers\Api\Posts\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,9 +50,10 @@ Route::post('/set-new-password',[AuthController::class,'setNewPassword']);
 
 Route::middleware(['auth:api'])->group(function () {
 
+
     Route::post('/invite',[InviteController::class, 'invitation']);
     Route::post('/logout',[AuthController::class,'logout']);
 
 
-    Route::post('/create-post',[AuthController::class,'logout']);
+    Route::post('/create-post',[PostController::class,'createPost']);
 });

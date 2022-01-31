@@ -16,9 +16,9 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-            $table->longText('content');
-            $table->string('slug')->unique();
+            $table->string('title')->nullable();
+            $table->longText('content')->nullable();
+            $table->string('slug')->unique()->nullable();
 
             $table->unsignedBigInteger('user_id')->comment('author of the post');
             $table->foreign('user_id')->references('id')->on('users');
